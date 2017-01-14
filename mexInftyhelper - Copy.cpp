@@ -1,7 +1,6 @@
 /* ---------------------------------------------------------------------------
 ** This file is composed of helper c++ routines to assist in the matlab infinity norm graph labelling**
 ** mexInftyhelper.cpp
-** <very brief file description>
 **
 ** Author: Shaona Ghosh
 ** Date: 26.02.2014
@@ -176,32 +175,6 @@ adjmattype contractGraph(vector<int> parentorig, int maxflow, adjmattype &residu
 	fileid.close();
 	//Create new adjacency matrix
 	vector<vector<int>> newAdj(totalpathcpy.size(),vector<int>(totalpathcpy.size()));
-	//for(int i = 0 ; i<totalpathcpy.size(); ++i)
-	{
-		//for(int j = 0; j<totalpathcpy.size(); ++j)
-		{
-			//Find first occurence of 
-			//auto itsrc = std::find(totalpathcpy.begin(),totalpathcpy.end(),source);
-			//auto itdest = std::find(totalpathcpy.begin(), totalpathcpy.end(),target); 
-			//// check that there actually is present in the vector
-			//std::vector<int>::const_iterator itpath = itsrc;
-			//while( itpath != itdest)
-			//{
-			//	for(int j = 0; j < V; ++j)
-			//	{
-			//		if(AdjMat[*itpath][j] != 0)&& (std::find((*iter).begin(), (*iter).end(), j) != (*iter).end()))
-			//	{
-			//		newAdj[i][j] = 1;
-			//		newAdj[j][i] = 1;
-			//	}
-			//	if (it != totalpathcpy.end()) {
-			//		totalpathcpy.erase(it);
-			//	}
-			//	++itpath;
-			//	}
-			//}
-		}
-	}
 	//Mapping to original vertices
 	cout<< "Just Pausing";
 	*num = totalpathcpy.size();
@@ -256,16 +229,11 @@ int findMaxFlow(adjmattype graph, int s, int t, adjmattype &fGraphvect, vector<i
  
     // Create a residual graph and fill the residual graph with
     // given capacities in the original graph as residual capacities
-    // in residual graph
-    //int rGraph[V][V]; // Residual graph where rGraph[i][j] indicates
+	// Residual graph where rGraph[i][j] indicates
                      // residual capacity of edge from i to j (if there
                      // is an edge. If rGraph[i][j] is 0, then there is not)
 	adjmattype  rGraph(graph.begin(),graph.end());
-	//std::copy(graph.begin(),graph.end(), rGraph.begin());
-    /*for (u = 0; u < V; u++)
-        for (v = 0; v < V; v++)
-             rGraph[u][v] = graph[u][v];*/
- 
+	
     int parent[V];  // This array is filled by BFS and to store path
 	vector<int> path;
     int max_flow = 0;  // There is no flow initially
@@ -297,8 +265,7 @@ int findMaxFlow(adjmattype graph, int s, int t, adjmattype &fGraphvect, vector<i
         max_flow += path_flow;
     }
  
-	//int fGraph[V][V];
-	
+		
 	//Calculate the flows on each edge - summing residual + capacity
 	for( int i = 0; i < V; ++i)
 	{
@@ -358,16 +325,7 @@ int calculatemaxflow( adjmattype Adj )
 	//Get number of vertices
 	int n = igraph_vcount(&g);
 	int m = igraph_ecount(&g);
-	/*igraph_get_edgelist(&g,&res,0);
-	for(int i = 0; i<n; ++i)
-	{
-		printf( "%d", VECTOR(res)[i]);
-	}*/
-	//Check the edges and vertices to verify index
-	/*igraph_vs_all(&vs);
-	igraph_es_all(&es,IGRAPH_EDGEORDER_FROM);
-	*/
-
+	
 	//calculate max flow
 	
 	//igraph_maxflow_value(&g,&flow,1,5,&capacity);
@@ -379,11 +337,9 @@ int calculatemaxflow( adjmattype Adj )
 
 	cout << value;
 
-
+	//Todo Garbage collection
 	
-	//Destroy graph - todo
-
-	//Close file - todo
+	fclose(fid)
 	return error;
 }
 
@@ -452,14 +408,13 @@ adjmattype mexcpp( int * num )
 
 
 	//read file for igraph graph creation
-	//calculatemaxflow(AdjMat);
 	cout << endl;
 	cout << endl;
 	adjmattype fGraphvect(V, std::vector<int>(V));
 	std::vector<int> parentorig;
 	int source = 0;
 	int target = 4;
-	//double maxflow = findMaxFlow(Adj,0,4,fGraphvect,parentorig);
+	
 	double maxflow = findMaxFlow(AdjMat,0,4,fGraphvect,parentorig);
 
 	//Find the edge disjoint paths

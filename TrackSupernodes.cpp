@@ -1,3 +1,6 @@
+/*******************************************************************************************************
+//Author: Shaona Ghosh
+/*******************************************************************************************************/
 #include"Misc.h"
 
 using namespace std;
@@ -15,11 +18,7 @@ void trackCollapse( const vector<int> supernodes, const list< vector<int> > coll
 		{
 			int index = *it2;
 			//update the collapsible list - no need to check already there
-			//std::advance(itsuper, count);
-			//mapsforcollapse[index] = *itsuper;
 			mapsforcollapse[index] = supernodes[count];
-			//if(index == 253)
-			//	cout << "253 in trackCollapse" << endl;
 		}
 		count++;//each row for each supernode
 	}

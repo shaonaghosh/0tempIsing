@@ -1,3 +1,6 @@
+/*******************************************************************************************************
+//Author: Shaona Ghosh
+/*******************************************************************************************************/
 #include"Misc.h"
 
 using namespace std;
@@ -7,7 +10,6 @@ void readDatasetLabelledNodes(vector<int>& labnodes, int num, int index)
 	std::ifstream fileid;
 	char buffer[100];
 	sprintf_s(buffer,"%s%d%d%s", "trainingset", num, index, ".csv"); 
-	//fileid.open ("trainingset4001.csv");
 	fileid.open(buffer);
 	string line;
 	while(getline(fileid,line))

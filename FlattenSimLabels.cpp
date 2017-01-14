@@ -1,4 +1,6 @@
-//#include "Utils.h"
+/*******************************************************************************************************
+//Author: Shaona Ghosh
+/*******************************************************************************************************/
 #include<stdio.h>
 #include<iostream>
 #include<cstring>
@@ -17,20 +19,7 @@ using namespace std;
 vector<int> findneighbours(int i, double labeli, double f_pred[], const int n, vector<int> allneigh);
 int main(int argc, const char* argv[])
 {
-	//TEST CODE for adjacency matrix for the three armed octopus
-	//int Adj[12][12] = {{ 0 ,    1,     0,     0,     1,     0,     0,     1,     0,     0,     0,     1},
-	//{1,     0,     1,     0,     0,     0,     0,     0,     0,     0,     0,     0},
-	//{0,     1,     0,     1,     0,     0,     0,     0,     0,     0,     0,     0},
-	//{0,     0,     1,     0,     0,     0,     0,     0,     0,     0,     0,     0},
-	//{1,     0,     0,     0,     0,     1,     0,     0,     0,     0,     0,     0},
-	//{0,     0,     0,     0,     1,     0,     1,     0,     0,     0,     0,     0},
-	//{0,     0,     0,     0,     0,     1,     0,     0,     0,     0,     0,     0},
-	//{1,     0,     0,     0,     0,     0,     0,     0,     1,     0,     0,     0},
-	//{0,     0,     0,     0,     0,     0,     0,     1,     0,     1,     0,     0},
-	//{0,     0,     0,     0,     0,     0,     0,     0,     1,     0,     1,     0},
-	//{0,     0,     0,     0,     0,     0,     0,     0,     0,     1,     0,     0},
-	//{1,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0}};
-
+	
 	//Test case with dummy nodes
 	int Adj[15][15] = {{ 0 ,    1,     0,     0,     1,     0,     0,     1,     0,     0,     0,     1, 0 , 0, 0},
 	{1,     0,     1,     0,     0,     0,     0,     0,     0,     0,     0,     0, 0, 0 ,0},
@@ -48,38 +37,18 @@ int main(int argc, const char* argv[])
 	{0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0, 1, 0, 0},
 	{0,     0,     0,     0,     0,     0,     0,     0,     1,     0,     0,     0, 0, 0, 0}};
 	
-	/*int Adj[7][7] = 
-	{{0,     1,     0,     0,     0,     0,     0},
-	{1,     0,     1,     1,     0,     0,     0},
-	{0,     1,     0,     0,     0,     0,     0},
-	{0,     1,     0,     0,     1,     0,     1},
-	{0,     0,     0,     1,     0,     1,     0},
-	{0,     0,     0,     0,     1,     0,     0},
-	{0,     0,     0,     1,     0,     0,     0}};*/
 	
-	//no of nodes
-	/*const int n = 12;  //Main ones
-	const int m = 11;*/
 
 	//Test case with dummy edges
 	const int n = 15;   
 	const int m = 14;
 
-	//const int n = 7;
-	//const int m = 6;
 	int l = 3;
-	//double f_pred[] = {-1, 0.1429, 1, 0.1429, -0.4286, -1, 1};
-	//double f_j[] = {-1,0,1,0,0,-1,1};
-
-
-	//double f_j[] = {-0.4, -0.6, -0.8, -1, -0.6, -0.8, -1, -0.4, -0.4, -0.4, -0.4, 1};
-	//double f_pred[] = {0.5,0,-0.5,-1,0.5,0.5,0.5,0.5,0.5,0.5,0.5,1};//main one for test
+	
 	double f_pred[] = {0.5,0,-0.5,-1,0.5,0.5,0.5,0.5,0.5,0.5,0.5,1,0.7,0.8,0.6};
-	//double f_pred[] = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1};
+	
 
 	//Need to decrease the indices by 1 when coming from matlab
-	//int labellednodes[] = {12, 4, 6, 11};  
-	//int labellednodes[] = {11, 3, 5, 10};
 	int labellednodes[] = {3, 11};
 	std::vector<int> labnodesvect(labellednodes, labellednodes + sizeof labellednodes / sizeof labellednodes[0]);
 
@@ -132,10 +101,6 @@ int main(int argc, const char* argv[])
 		vector<int> neighorig;
 
 		////check if already present in 
-		//visitedarr.clear();
-		//parentsarr.clear();
-		//newneigharr.clear();
-	   //neighorig.clear();
 		int predecessor = indicestoloop.front();
 
 				
@@ -219,11 +184,6 @@ int main(int argc, const char* argv[])
 
 		list<vector<int>> neighpernodexist;
 		list<vector<double>> labneighpernodexist;
-		/*vector<int> temp1; 
-		vector<double> temp2;
-		temp1.push_back((*iter).begin())
-		neighpernodexist.push_back();
-		labneighpernodexist.push_back(f_pred[*iter.begin()]);*/
 		
 		std::vector<int>::const_iterator iter2;
 		//Need to keep track of the neighbours of the nodes being collapsed   
@@ -309,47 +269,7 @@ int main(int argc, const char* argv[])
 
 			//Add the nodes that will not be collapsed - TODO...basically need to join this with other main nodes in the collapsiblelist TODO check lists
 		}
-		else{// only one node no node to collapse - might not be under else, could just be generic for every non-collapsible node need to connec to other non-collapsoble or labels node- just check 
-			//connec to to other main non collpasible node - basically parent of a collapsible node in o
-			//vector<int> neighnotsame;
-			//vector<double> labneighnotsame;
-			////for nodes that does not have neighbouring nodes to collapse
-			//std::vector<int>::const_iterator iter3 = (*iter).begin();
-			//neighnotsame.push_back(*iter3);
-			//labneighnotsame.push_back(f_pred[*iter3]);
-			//
-			//neighpernodexist.push_back(neighnotsame);
-			//labneighpernodexist.push_back(labneighnotsame);
-
-			////These nodes have no collapsible list so should be straightforward to attach to neighbours in original adj matrix if non collapsible node
-			//for(int j = 0; j < n; ++j)
-			//{
-			//	if( Adj[*iter3][j] != 0)
-			//	{
-			//		//Just check if main non-collapsible node
-
-			//		//Update the adjacency list
-			//		if(newAdj != NULL)
-			//		{
-			//			newAdj[countrows+countcols*zones] = 1;
-			//			newAdj[countcols+countrows*zones] = 1;
-			//			//countrows += 1;
-			//			//countcols += 1;
-			//			numnodes += 1;
-			//		}
-			//	}
-			//}
-		}
 		
-		
-
-
-		//std::vector<int>:: const_iterator iter2;
-		//for(iter2 = (*iter).begin(); iter2 != (*iter).end()-1; ++iter2)
-		//{
-		//	
-		//	//newAdj[i + j*zones]
-		//}
 		//Update rows and columns
 		countrows = numnodes;
 		countcols = countrows + 1;
@@ -481,18 +401,4 @@ vector<int> findneighbours(int i, double labeli, double f_pred[], const int n, v
 	return samelabneigh;
 	
 }
-//Read graph from file to adjacency stl
-//
-//read labels from file
-//
-//create 0d adjacency with nodes in path
-//
-//
-//	- see if nodes in path 
-//	- pick each path start with the first two add 1 on new adj
-//        and reverse direction
-//
-//compress to get actual mapping 
-//
-//
-//predict based on shortest path
+

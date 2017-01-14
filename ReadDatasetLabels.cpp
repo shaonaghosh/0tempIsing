@@ -1,3 +1,6 @@
+/*******************************************************************************************************
+//Author: Shaona Ghosh
+/*******************************************************************************************************/
 #include"Misc.h"
 
 using namespace std;
@@ -22,10 +25,7 @@ void readDatasetLabels(vector<int>& labels, int num, int index)
 		
 		istringstream(str1) >> nodei;
 		istringstream (str2) >> labeli; 
-		
-		//labelrec.push_back(nodei-1);
-		//labelrec.push_back(labeli);
-		
+			
 		labels.push_back(labeli);
 	}
 

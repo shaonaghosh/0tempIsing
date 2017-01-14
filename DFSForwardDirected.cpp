@@ -1,3 +1,6 @@
+/*******************************************************************************************************
+//Author: Shaona Ghosh
+/*******************************************************************************************************/
 #include"Misc.h"
 
 using namespace std;
@@ -26,24 +29,11 @@ vector<int> dfsflowpathnodesbetween(int flownode1, int flownode2, adjmattype adj
 		//normal backtrack of dfs
 		int top = s.top();
 		s.pop();//??
-		//int topparent = parentnodes.top();
-		//should pop parenthere
-		//parentnodes.pop();//??
-			
+					
 		//terminating condition
 		if(top == flownode2 || (marked[top] == true))
 		{
-			//bmark all parents to indicate - found a set  of to be collapsed flow nodes. will be ready for backtrack
-			//while(parentnodes.empty() == false)
-			//{
-			//	//int topparent = parentnodes.top();
-			//	if(-1 != topparent && (false == marked[topparent]))
-			//	{
-			//		marked[topparent] = true;
-			//	}
-			//	topparent = parentnodes.top();//?? need to pop to change top					
-			//}
-			//
+			//bmark all parents to indicate - found a set  of to be collapsed flow nodes. Will be ready for backtrack
 			for (int v = top; v != flownode1; v = parents[v])
 			{
 				if(v != -1){
@@ -82,7 +72,7 @@ vector<int> dfsflowpathnodesbetween(int flownode1, int flownode2, adjmattype adj
 		//cout << "traversed node  " << top << "\n";
 		
 	}
-//	nodestocontract = visitedarr;
+
 }
 	return visitedarr;
 }

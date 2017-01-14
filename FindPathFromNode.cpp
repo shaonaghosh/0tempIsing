@@ -1,9 +1,12 @@
+/*******************************************************************************************************
+//Author: Shaona Ghosh
+/*******************************************************************************************************/
 #include"Misc.h"
 
 using namespace std;
 
 
-//find the flow path that the node is contained in
+//find the flow path that the node to label is contained in
 vector<int> findPathFromNode(int indexofnode, list<vector<int>> flowpathlist)
 {
 	vector<int> retpath;

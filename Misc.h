@@ -1,3 +1,6 @@
+/*******************************************************************************************************
+//Author: Shaona Ghosh
+/*******************************************************************************************************/
 //Misc.h
 #ifndef MISCMONPRED_H
 #define MISCMONPRED_H
@@ -26,13 +29,7 @@ typedef std::map<int,int> mapstype;
 typedef std::list<std::vector<int>> adjlist;
 ////////////////////////////////////////////////////////////////////////////////////
 // 
-// Number of vertices in given graph - TODO Remove hardcoding
-//#define V 6
-//#define V 7
-//#define V 1586
-//#define V 15
-//#define V 12
-//#define V 11
+// Number of vertices in given graph - TODO  - have a config file
 #define V 8
 #define _SIMULATOR_TEST_NORMAL 0
 #define _SIMULATOR_INTERTWINED_TEST 0

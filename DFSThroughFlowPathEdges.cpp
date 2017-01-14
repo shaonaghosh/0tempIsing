@@ -1,3 +1,6 @@
+/*******************************************************************************************************
+//Author: Shaona Ghosh
+/*******************************************************************************************************/
 #include"Misc.h"
 
 using namespace std;
@@ -16,7 +19,6 @@ void dfs(int index, vector<int>& nodestocontract, adjmattype Adj, vector<int> to
 		int top = s.top();
 		s.pop();
 
-		//if( NULL != top ){
 		//check if already visited if yes continue with others
 		if( ( visitedarr.empty() == false ) && (std::find(visitedarr.begin(), visitedarr.end(), top) != visitedarr.end()))
 			continue;
@@ -33,7 +35,7 @@ void dfs(int index, vector<int>& nodestocontract, adjmattype Adj, vector<int> to
 					s.push(i);
 			}
 		}
-		//cout << "Traversed node  " << top << "\n";
+		
 		
 	}
 	nodestocontract = visitedarr;

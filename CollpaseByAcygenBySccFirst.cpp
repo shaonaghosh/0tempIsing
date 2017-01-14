@@ -1,3 +1,6 @@
+/*******************************************************************************************************
+//Author: Shaona Ghosh
+/*******************************************************************************************************/
 #include"Misc.h"
 
 using namespace std;
@@ -197,7 +200,6 @@ void findAllUndirEdgesToCollapse2(list<vector<int>>& nodestocontractlist, vector
 		//find path for this node on flowpaths
 		vector<int> currflowpath = findPathFromNode(index, flowpathslist);
 		//nodestocontract above will include, for each node in flow path, nodes not in flow paths, nodes in same or different flowpaths
-		//dfsforundirected(index, nodestocontract, residualcpy,  currflowpath, AdjMat); 
 		dfsforundirectededgesonly(index, nodestocontractlist, nodestocontract, residualcpy, totalpathcpy, AdjMat);
 		nodestocontractlist.push_back(nodestocontract);
 		nodestocontract.clear();
@@ -239,25 +241,17 @@ void contractGraphSCCBySccFirst(vector<int> parentorig, int maxflow, adjmattype 
 	ofstream fileid;
 	fileid.open ("verticescontracted.txt");
 
-	//findAllUndirEdgesToCollapse(nodestocontraclist, nodestocontract, 
-	//	residual, totalpathcpy, AdjMat, flowpathslist);
 	
-	
-
-
 	//now collapse the SCCs to supernodes to remove loops
 	//go through each flow paths and collapse everything not in flow paths
 	std::list<vector<int>>::const_iterator iterpaths;
 	std::vector<int>::const_iterator iterpathnode;
 	list<vector<int>> listSccCpy = listScc;
-	//for( iterpaths = flowpathslist.begin(); iterpaths != flowpathslist.end(); ++iterpaths)
-
+	
 	//Go through the scc list instead of flow path nodes
 	for(iterpaths = listScc.begin(); iterpaths != listScc.end(); ++iterpaths)
 	{	
-		//vector<int> path = *iterpaths;
 		vector<int> sccincpy = *iterpaths;
-		//for(iterpathnode = path.begin(); iterpathnode != path.end(); ++iterpathnode)
 		for(iterpathnode = sccincpy.begin(); iterpathnode != sccincpy.end(); ++iterpathnode)
 		{
 			int nodetocontract = *iterpathnode;
@@ -286,8 +280,7 @@ void contractGraphSCCBySccFirst(vector<int> parentorig, int maxflow, adjmattype 
 				if(-1 == supernodeidx)
 						supernodeidx = nodetocontract;
 				//collapse the sccs to this supernode by keeping track of all incoming and outgoing edges
-				//collapseDirectedEdges(sccin, supernodeidx, nodescontracted, collapmap, residual);
-				collapseDirectedEdges2(sccin, supernodeidx, nodescontracted, collapmap, 
+				CollapseDirectedEdges2(sccin, supernodeidx, nodescontracted, collapmap, 
 				residual, newAdjMat, nodestocontraclist);
 				//remove the scc that has been collapsed already
 				listSccCpy.remove(sccin);
@@ -301,10 +294,6 @@ void contractGraphSCCBySccFirst(vector<int> parentorig, int maxflow, adjmattype 
 	}
 
 
-	//Find k arb maxflow paths from the flow network
-	/*std::copy(residual.begin(), residual.end(), residualcpy.begin());
-	findkArbFlowPaths(flowpathslist, cntmaxflowpath, residualcpy, 
-	source, target, parentofpath, flowpath, totalpath );*/
 	cout << "";
 	//Find k arb maxflow paths from the flow network
 	std::copy(residual.begin(), residual.end(), residualcpy.begin());

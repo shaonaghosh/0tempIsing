@@ -1,3 +1,6 @@
+/*******************************************************************************************************
+//Author: Shaona Ghosh
+/*******************************************************************************************************/
 #include<stdio.h>
 #include<iostream>
 #include<cstring>
@@ -15,25 +18,13 @@ using namespace std;
 typedef vector<vector<int>> adjmattype;
 bool isAlreadyCollapsed(int index1, int index2, vector<int> visitedarr, list<vector<int>> collaplist);
 bool makeFlattenLabelledGraph(list<vector<int>> collaplist, vector<int> visitedarr, adjmattype AdjMat, adjmattype& AdjLabFlatten, int n);
-//void collapseLabelledNodes( adjmattype AdjMat, adjmattype& AdjLabFlatten, int num, int* f_j, int lenf_j, int* labnodes, int lenlabnodes)
+
 void collapseLabelledNodes( adjmattype AdjMat, adjmattype& AdjLabFlatten, int num, vector<int> f_pred, int lenf_j, vector<int> labnodesvect, int lenlabnodes, vector<int>& supernodes, list< vector<int> >& collaplistret)
 {
 	list<vector<int>> collaplist;
 	vector<int> listtocollapse;
 	vector<int> visitedarr;
 
-	/*int *f_pred = new int[lenf_j];
-	for(int i = 0; i<lenf_j; ++i)
-	{
-		f_pred[i] = f_j[i];
-	}*/
-
-	/*int *labellednodes =  new int[lenlabnodes];
-	for(int i = 0 ; i<lenlabnodes; ++i)
-	{
-		labellednodes[i] = labnodes[i];
-	}
-	std::vector<int> labnodesvect(labellednodes, labellednodes + lenlabnodes);*/
 
 	std::vector<int>::const_iterator iter2 ;
 	std::vector<int>::const_iterator iter3 ;
@@ -89,19 +80,7 @@ void collapseLabelledNodes( adjmattype AdjMat, adjmattype& AdjLabFlatten, int nu
 
 	//Make new adjacency matrix by flattening
 	makeFlattenLabelledGraph(collaplist, visitedarr, AdjMat, AdjLabFlatten, num);
-	//Display
-//	cout << "After initial flattening \n";
-	for(int i = 0 ; i<num; ++i)
-	{
-		for(int j = 0; j<num; ++j)
-		{
-			
-//			cout << AdjLabFlatten[i][j];
-//			cout << " ";
-		}
-//		cout << endl;
-	}
-//	cout << endl;
+
 	//return the supernode and collapsible list information
 	supernodes = visitedarr;
 	collaplistret = collaplist; 

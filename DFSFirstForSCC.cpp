@@ -1,8 +1,11 @@
+/*******************************************************************************************************
+//Author: Shaona Ghosh
+/*******************************************************************************************************/
 #include"Misc.h"
 
 using namespace std;
-//function to perform dfs to order accroding completion time of the dfs for each vertex as first step
-//to finding strongly connected components
+//function to perform dfs to order according to completion time of the dfs for each vertex as first step
+//for finding strongly connected components
 void DFSFirstForSCC(int vertex, bool visited[], stack<int> &Stack, adjlist adj)
 {
 	// Mark the current node as visited and print it

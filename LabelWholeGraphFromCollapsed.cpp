@@ -1,3 +1,6 @@
+/*******************************************************************************************************
+//Author: Shaona Ghosh
+/*******************************************************************************************************/
 #include"Misc.h"
 
 using namespace std;
@@ -32,10 +35,7 @@ void labelAllNodesFromCollapsed(vector<int>& predlabelsWholeGraph, vector<int> l
 		}
 
 		//update predicted label to predlabel vector- using old index- before that need to be sure this is the 
-		//predlabelsWholeGraph.insert(predlabelsWholeGraph.begin(),labeltopred);
 		predlabelsWholeGraph[nodetopredold] = labeltopred;
-		//if(predlabelsWholeGraph[nodetopredold] == 0)
-			//cout << " 0 inside whole graph" << endl;
 	}
 
 }	

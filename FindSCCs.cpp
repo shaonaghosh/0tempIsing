@@ -1,7 +1,11 @@
+/*******************************************************************************************************
+//Author: Shaona Ghosh
+/*******************************************************************************************************/
 #include"Misc.h"
 
 using namespace std;
 
+//Find the strongly connected components
 void findSCCs( adjmattype AdjMat, list<vector<int>>& listScc)
 {
     stack<int> Stack;

@@ -1,3 +1,6 @@
+/*******************************************************************************************************
+//Author: Shaona Ghosh
+/*******************************************************************************************************/
 #include"Misc.h"
 
 using namespace std;
@@ -17,20 +20,13 @@ void predictLabels(const list< vector<int> > flowpathlist, const mapstype mapnew
 		int labeltopred = 0;
 		if(newlabels[j] != 0){
 			//already labelled
-			//predlabelsNewGraph.push_back(newlabels[j]);
-			//predlabelsNewGraph.insert(predlabelsNewGraph.begin()+j, newlabels[j]);
 			predlabelsNewGraph[j] = newlabels[j];
 			continue;
 		}else{//not labelled yet
 			int cntmajupstream = 0, cntmajdwnstream = 0;
 
 			//need to get the old index back as can work on old indices itself
-			/*if(present(mapnewtoold, j)){
-				mapstype::const_iterator mapiter = mapnewtoold.find(j);
-				nodetoprednew = mapiter->second;
-			}*/	
-			//TODO not log n as of searching with key
-			
+			//TODO Make log n as of now not searching with key
 			for (mapiter = mapnewtoold.begin(); mapiter != mapnewtoold.end(); ++mapiter ){
 				if (mapiter->second == j){
 					nodetopred = mapiter->first; //get the old index, will search through flow paths using this index as flowpaths have old index
@@ -98,9 +94,6 @@ void predictLabels(const list< vector<int> > flowpathlist, const mapstype mapnew
 		
 		
 		//Update the new labels for the new graph
-		//predlabelsNewGraph.insert(predlabelsNewGraph.begin()+j,labeltopred);
 		predlabelsNewGraph[j] = labeltopred;
-		//if(predlabelsNewGraph[j] == 0)
-			//cout  << "0 inside new graph\n";
 	}
 }

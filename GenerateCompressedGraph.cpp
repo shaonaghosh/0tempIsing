@@ -1,3 +1,6 @@
+/*******************************************************************************************************
+//Author: Shaona Ghosh
+/*******************************************************************************************************/
 #include"Misc.h"
 
 using namespace std;
@@ -31,16 +34,12 @@ int compress(int *in, int ***out, int map[], int n, mapstype& oldtonewmap){
 	*out = new int*[new_n];
 
 	/* Use mapping function to copy only non-zero edges*/
-//	cout << "Compressed Adjacency Mapped to Old Adjacency\n";
-//	cout << "\n";
 	for (i = 0; i < new_n; i++){
 		(*out)[i] = new int[new_n];
 		for (j = 0; j < new_n; j++){
 			(*out)[i][j] = *(in + map[i] * n + map[j]);
-//			cout << (*out)[i][j];
-//			cout <<  " ";
 		}
-//		cout  << "\n";
+
 	}
 
 	return new_n;
